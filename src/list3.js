@@ -8,11 +8,23 @@ class List extends React.Component{ // declare a customised tag as  <List></List
   }
 
   render(){
-    const article = this.props.article;
-    const lis = article.map(art=>{
-      <Li title={art.title} content={art.content} />
+    //const article = this.props.article;
+    /*
+    const lis = this.props.article.map(art=>{
+      <Li title={art.title} content={art.content} ></Li>
     });
+    */
+    console.log(this.props.article);
+    const article = this.props.article;
+    console.log("article",article,"article");
 
+    const lis = article.map(
+      //art=>{<Li title={art.title} content={art.content} />
+      function(art){
+        return <Li title={art.title} content={art.content} ></Li>
+      });
+
+    console.log("---",lis,"---");
     return <ul>
       {lis}
     </ul>
@@ -25,6 +37,7 @@ let article = [
   {title:"真理的福音做腰带", content:"真理成我们的根基我们毫不动摇"},
   {title:"平安的福音鞋履", content:"我们将平安穿在脚上出入都平安"},
   {title:"圣灵的宝剑和信德的藤牌", content:"这是神的道，即可灭尽恩者的火箭也能征战"}
+  //{title: "Helmet of Salvation", content: "Help us protect our minds"}
 ];
 
 ReactDom.render(<List article={article} ></List>, document.body);
